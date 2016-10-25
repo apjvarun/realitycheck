@@ -4,11 +4,10 @@ load ftr.mat
 % SVM classification
 % This list is being made to find the average random accuracy (for 80/20 selection).  
 
-
-avg_over = 100;
+avg_over = 1;
 acc = zeros(length(avg_over),1);
 for index = 1:avg_over
-    k = 800
+    k = 800;
     ftr1 = feature_matrix([1:k, 801:(800+k)], :);
     all = randperm(size(ftr1,1));
     train = all(1:round(0.8*size(ftr1,1)));
@@ -33,8 +32,18 @@ for index = 1:avg_over
     %% Evaluation
     acc(index) = mean(pred == Y_test);
     
+    % Accuracy for positive class
+    p_subset = find(Y_test == 1);
+    acc_pos(index) = mean(pred(p_subset)==1);
+    
+    % Accuracy for negative class
+    p_subset = find(Y_test == 0);
+    acc_neg(index) = mean(pred(p_subset)==0);
+    
 end
 
 %plot(k_list, acc);
 display('The mean accuracy is: ');
-mean(acc);
+mean(acc)
+mean(acc_pos)
+mean(acc_neg)
