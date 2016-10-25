@@ -31,8 +31,8 @@ for k = k_list
     
     
     %% Evaluation
-    acc(index) = sum(pred == Y_test)/length(Y_test)*100
-    index = index+1;
+    acc(index) = sum(pred == Y_test)/length(Y_test)*100;
+    index = index+1
     
 end
 

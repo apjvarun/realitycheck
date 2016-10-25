@@ -1,11 +1,10 @@
-clear all
-
+clear all;
 load ftr.mat;
 
 feature_matrix = ftr;
 
 %%
-k_list = 700:10:800;
+k_list = 50:5:800;
 acc = zeros(length(k_list),1);
 index = 1;
 for k = k_list
@@ -32,9 +31,10 @@ for k = k_list
     
     
     %% Evaluation
-    acc(index) = sum(pred == Y_test)/length(Y_test)*100
-    index = index+1;
+    acc(index) = sum(pred == Y_test)/length(Y_test)*100;
+    index = index+1
     
 end
 
-plot(k_list, acc);
+plot(k_list, smooth(smooth(smooth(smooth(smooth(acc))))));
+plot(k_list, smooth(acc);
