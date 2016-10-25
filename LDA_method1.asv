@@ -1,0 +1,4 @@
+load ftr.mat
+X_train =
+load fisheriris
+Mdl = fitcdiscr(meas,species)
