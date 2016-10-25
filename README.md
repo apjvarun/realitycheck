@@ -4,6 +4,7 @@ This file extracts features from 1600 images (equal number of positive class and
 
 
 File: SVM_method1.m
+-----
 Input: ftr.mat
 Ouput: Average random accuracy
 
