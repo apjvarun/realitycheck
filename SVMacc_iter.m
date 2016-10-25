@@ -37,3 +37,4 @@ for k = k_list
 end
 
 plot(k_list, smooth(smooth(smooth(smooth(smooth(acc))))));
+plot(k_list, smooth(acc);
