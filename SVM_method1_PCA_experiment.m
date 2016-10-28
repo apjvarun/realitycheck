@@ -4,7 +4,7 @@ load ftr.mat
 % SVM classification with PCA
 % This list is being made to find the average random accuracy (for 80/20 selection).  
 
-avg_over = 15;
+avg_over = 5;
 acc = zeros(length(avg_over),1);
 acc_pca = zeros(length(avg_over),1);
 feature_matrix = ftr;
@@ -23,8 +23,12 @@ for index = 1:avg_over
     Y_test = ftr1(test,217);
     
     %% Perform PCA of training data and test data
+    mu = mean(X_train);
+    X_train = X_train - repmat(mu,size(X_train,1),1);
+    X_test = X_test - repmat(mu,size(X_test,1),1);
+    
     C = 1/(size(X_train,1))*X_train'*X_train;
-    keep_dims = 125;
+    keep_dims = 200;
     [U, D] = eigs(C,keep_dims, 'lm');
     
     X_train_pca = X_train*U;
